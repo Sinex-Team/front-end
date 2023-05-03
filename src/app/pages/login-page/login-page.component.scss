@@ -11,7 +11,7 @@ main {
 h1 {
   font-size: 4rem;
   text-transform: uppercase;
-  margin-bottom: 10vh;
+  margin-bottom: 16vh;
 }
 
 h2 {
@@ -21,8 +21,8 @@ h2 {
 
 .inputs-group {
   width: 35vw;
-  height: 40vh;
-  padding: 4vh 2vw;
+  height: 20vh;
+  padding: 3.5vh 2vw;
   background-color: rgba(138, 143, 133, 0.4);
   border-radius: 1vw;
   display: flex;
@@ -32,7 +32,7 @@ h2 {
 
   input {
     width: 100%;
-    height: 15%;
+    height: 40%;
     font-size: 1rem;
     border-bottom: 0.01rem solid #000000;
     background-color: transparent;
