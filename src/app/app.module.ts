@@ -10,7 +10,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
   declarations: [
     AppComponent,
     RegistrationPageComponent,
-    LoginPageComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
