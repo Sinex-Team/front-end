@@ -1,0 +1,62 @@
+main {
+  display: flex;
+  background-color: #E8E9E8;
+}
+
+aside {
+  width: 20vw;
+  height: 90vh;
+  background-color: #F3F3F3;
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    margin: 4vh 1vw 2.5vh 1vw;
+    font-weight: lighter;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 1.2rem;;
+  }
+
+  nav {
+    background-color: rgba(217, 217, 217, 0.3);
+    display: flex;
+    flex-wrap: wrap;
+    height: 15%;
+  }
+}
+
+.user {
+  padding: 4vh 0.5vw;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+
+  img {
+    width: 3vw;
+    margin-right: 0.5vw;
+  }
+}
+
+.nav-block {
+  width: 100%;
+  padding-left: 1vw;
+  display: flex;
+  align-items: center;
+  transition: 0.3s;
+  cursor: pointer;
+
+  img {
+    width: 1vw;
+    margin-right: 0.5vw;
+  }
+}
+
+.user:hover {
+  background-color: rgba(138, 143, 133, 0.45);
+}
+
+.nav-block:hover {
+  background-color: rgba(138, 143, 133, 0.5);;
+}
