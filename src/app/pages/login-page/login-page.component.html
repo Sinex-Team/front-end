@@ -2,10 +2,10 @@
   <h1>Aquamole</h1>
   <h2>Sign in to your account</h2>
   <form>
-    <div class="inputs-group">
-      <input placeholder="Email" type="email">
-      <input placeholder="Password" type="password">
-      </div>
+    <div class="inputs-group" [formGroup]="loginForm" (ngSubmit)="login()">
+      <input placeholder="Email" type="email" formControlName="email">
+      <input placeholder="Password" type="password" formControlName="password">
+    </div>
     <button type="submit">Sign in</button>
   </form>
   <span class="redirect-text">

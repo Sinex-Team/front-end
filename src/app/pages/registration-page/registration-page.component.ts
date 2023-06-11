@@ -24,8 +24,8 @@ export class RegistrationPageComponent {
       const user: User = {firstname: this.registrationForm.controls.name.value!, lastname: this.registrationForm.controls.surname.value!,
         email: this.registrationForm.controls.email.value!, password: this.registrationForm.controls.password.value!}
       this.authService.registration(user).subscribe(response => {
-        localStorage.setItem("access_token", response.access_token);
-        localStorage.setItem("refresh_token", response.refresh_token);
+        localStorage.setItem('access_token', response.access_token);
+        localStorage.setItem('refresh_token', response.refresh_token);
         this.registrationForm.reset();
         this.router.navigate(['/dashboard/home']);
       });
