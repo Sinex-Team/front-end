@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  isLog = localStorage.getItem("token");
+  isLog = localStorage.getItem("access_token");
 }
