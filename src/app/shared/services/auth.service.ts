@@ -1,22 +1,42 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {User} from "../interfaces/User";
+import {User} from "../types/User";
 import {UserResponse} from "../interfaces/UserResponse";
-import {Observable} from "rxjs";
-import {LoginUser} from "../interfaces/LoginUser";
+import {Subject} from "rxjs";
+import {LoginUser} from "../types/LoginUser";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  authSubject = new Subject<boolean>();
 
-  constructor(private http: HttpClient) {}
-
-  registration(user: User): Observable<UserResponse> {
-    return this.http.post<UserResponse>("https://backend-aquamole.azurewebsites.net/auth/reg", user);
+  constructor(private http: HttpClient, private router: Router) {
+    this.authSubject.next(this.isLoged());
   }
 
-  login(user: LoginUser): Observable<UserResponse> {
-    return this.http.post<UserResponse>("https://backend-aquamole.azurewebsites.net/auth/log", user);
+  registration(user: User) {
+    this.http.post<UserResponse>("https://backend-aquamole.azurewebsites.net/auth/reg", user).subscribe(response => {
+      localStorage.setItem('access_token', response.access_token);
+      localStorage.setItem('refresh_token', response.refresh_token);
+      this.router.navigateByUrl('/dashboard/home');
+    });
+  }
+
+  login(user: LoginUser) {
+    this.http.post<UserResponse>("https://backend-aquamole.azurewebsites.net/auth/log", user).subscribe(response => {
+      localStorage.setItem('access_token', response.access_token);
+      localStorage.setItem('refresh_token', response.refresh_token);
+      this.router.navigateByUrl('/dashboard/home');
+    });
+  }
+
+  private isLoged() {
+    let isToken = false;
+    if (localStorage.getItem('access_token')) {
+      isToken = true;
+    }
+    return isToken;
   }
 }

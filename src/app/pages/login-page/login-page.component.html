@@ -1,8 +1,8 @@
 <main>
   <h1>Aquamole</h1>
   <h2>Sign in to your account</h2>
-  <form>
-    <div class="inputs-group" [formGroup]="loginForm" (ngSubmit)="login()">
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <div class="inputs-group">
       <input placeholder="Email" type="email" formControlName="email">
       <input placeholder="Password" type="password" formControlName="password">
     </div>

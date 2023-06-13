@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {AuthService} from "../../shared/services/auth.service";
-import {User} from "../../shared/interfaces/User";
-import {Router} from "@angular/router";
+import {User} from "../../shared/types/User";
 
 @Component({
   selector: 'app-registration-page',
@@ -17,18 +16,14 @@ export class RegistrationPageComponent {
     password: new FormControl('', Validators.required)
   })
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService) {}
 
   register(): void {
     if (!this.registrationForm.invalid) {
       const user: User = {firstname: this.registrationForm.controls.name.value!, lastname: this.registrationForm.controls.surname.value!,
         email: this.registrationForm.controls.email.value!, password: this.registrationForm.controls.password.value!}
-      this.authService.registration(user).subscribe(response => {
-        localStorage.setItem('access_token', response.access_token);
-        localStorage.setItem('refresh_token', response.refresh_token);
-        this.registrationForm.reset();
-        this.router.navigate(['/dashboard/home']);
-      });
+      this.authService.registration(user);
+      this.registrationForm.reset();
     }
   }
 }

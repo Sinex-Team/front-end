@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../shared/services/auth.service";
-import {LoginUser} from "../../shared/interfaces/LoginUser";
+import {LoginUser} from "../../shared/types/LoginUser";
 import {Router} from "@angular/router";
 
 @Component({
@@ -15,17 +15,13 @@ export class LoginPageComponent {
     password: new FormControl('', Validators.required)
   });
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService) {}
 
-  login(): void {
+  login() {
     if (!this.loginForm.invalid) {
       const user: LoginUser = {email: this.loginForm.controls.email.value!, password: this.loginForm.controls.password.value!}
-      this.authService.login(user).subscribe(response => {
-        localStorage.setItem('access_token', response.access_token);
-        localStorage.setItem('refresh_token', response.refresh_token);
-        this.loginForm.reset();
-        this.router.navigate(['/dashboard/home']);
-      });
+      this.authService.login(user);
+      this.loginForm.reset();
     }
   }
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {AuthService} from "./shared/services/auth.service";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  isLog = localStorage.getItem("access_token");
+  isLog = false;
+  constructor(private authService: AuthService) {
+    this.authService.authSubject.subscribe(loginState => {
+      this.isLog = loginState;
+      console.log(loginState);
+    });
+  }
 }

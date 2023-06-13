@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
+import {IsLogoutGuard} from "./shared/guards/is-logout.guard";
+import {IsLoginChildGuard} from "./shared/guards/is-login-child.guard";
+
 import { RegistrationPageComponent } from './pages/registration-page/registration-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 
@@ -9,11 +13,13 @@ import {DashboardHistoryComponent} from "./pages/dashboard-page/dashboard-histor
 import {
   DashboardPumpSettingsComponent
 } from "./pages/dashboard-page/dashboard-pump-settings/dashboard-pump-settings.component";
+import {IsLoginGuard} from "./shared/guards/is-login.guard";
 
 const routes: Routes = [
-  { path: 'reg', component: RegistrationPageComponent },
-  { path: 'login', component: LoginPageComponent },
-  { path: 'dashboard', component: DashboardPageComponent, children: [
+  { path: 'reg', component: RegistrationPageComponent, canActivate: [IsLogoutGuard]},
+  { path: 'login', component: LoginPageComponent,  canActivate: [IsLogoutGuard]},
+  { path: 'dashboard', component: DashboardPageComponent, canActivate: [IsLoginGuard], canActivateChild: [IsLoginChildGuard],
+    children: [
       { path: 'home', component: DashboardHomeComponent },
       { path: 'history', component: DashboardHistoryComponent },
       { path: 'pump-settings', component: DashboardPumpSettingsComponent }
