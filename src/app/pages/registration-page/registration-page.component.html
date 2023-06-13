@@ -1,17 +1,17 @@
 <main>
   <h1>Aquamole</h1>
   <h2>Create an account</h2>
-  <form>
+  <form [formGroup]="registrationForm" (ngSubmit)="register()">
     <div class="inputs-group">
-      <input placeholder="Name" type="text">
-      <input placeholder="Surname" type="text">
-      <input placeholder="Email" type="email">
-      <input placeholder="Password" type="password">
+      <input placeholder="Name" type="text" formControlName="name">
+      <input placeholder="Surname" type="text" formControlName="surname">
+      <input placeholder="Email" type="email" formControlName="email">
+      <input placeholder="Password" type="password" formControlName="password">
     </div>
     <button type="submit">Create account</button>
   </form>
   <span class="redirect-text">
     <p>Already have an account?</p>
-    <a>Sign in</a>
+    <a [routerLink]="'/login'">Sign in</a>
   </span>
 </main>

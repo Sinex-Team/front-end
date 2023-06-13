@@ -10,7 +10,7 @@ export class HygrometerService {
 
   constructor(private http: HttpClient) { }
 
-  getAllHygrometers(): Observable<Array<Hygrometer>> {
-    return this.http.get<Array<Hygrometer>>("https://backend-aquamole.azurewebsites.net/hygrometers");
+  getAllHygrometers(): Observable<Hygrometer[]> {
+    return this.http.get<Hygrometer[]>("https://backend-aquamole.azurewebsites.net/hygrometers");
   }
 }

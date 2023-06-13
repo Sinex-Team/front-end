@@ -9,7 +9,7 @@ import {Observable} from "rxjs";
   styleUrls: ['./dashboard-home.component.scss']
 })
 export class DashboardHomeComponent {
-  hygrometers: Array<Hygrometer> = [];
+  hygrometers: Hygrometer[] = [];
 
   constructor(private hygrometerService: HygrometerService) {}
 
