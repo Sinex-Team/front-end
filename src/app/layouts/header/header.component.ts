@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {Router} from "@angular/router";
 import {AuthService} from "../../shared/services/auth.service";
 
 @Component({
@@ -8,12 +7,9 @@ import {AuthService} from "../../shared/services/auth.service";
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(private authService: AuthService) {}
 
   logOut() {
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('refresh_token');
-    this.authService.authSubject.next(false);
-    this.router.navigateByUrl('/reg');
+    this.authService.logOut();
   }
 }

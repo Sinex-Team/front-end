@@ -32,6 +32,12 @@ export class AuthService {
     });
   }
 
+  logOut() {
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
+    this.router.navigateByUrl('/login');
+  }
+
   private isLoged() {
     let isToken = false;
     if (localStorage.getItem('access_token')) {
