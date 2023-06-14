@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import {IsLogoutGuard} from "./shared/guards/is-logout.guard";
 import {IsLoginChildGuard} from "./shared/guards/is-login-child.guard";
+import {IsLoginGuard} from "./shared/guards/is-login.guard";
 
 import { RegistrationPageComponent } from './pages/registration-page/registration-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
@@ -13,7 +14,7 @@ import {DashboardHistoryComponent} from "./pages/dashboard-page/dashboard-histor
 import {
   DashboardPumpSettingsComponent
 } from "./pages/dashboard-page/dashboard-pump-settings/dashboard-pump-settings.component";
-import {IsLoginGuard} from "./shared/guards/is-login.guard";
+import { UserPageComponent } from './pages/dashboard-page/user-page/user-page.component';
 
 const routes: Routes = [
   { path: 'reg', component: RegistrationPageComponent, canActivate: [IsLogoutGuard]},
@@ -22,7 +23,8 @@ const routes: Routes = [
     children: [
       { path: 'home', component: DashboardHomeComponent },
       { path: 'history', component: DashboardHistoryComponent },
-      { path: 'pump-settings', component: DashboardPumpSettingsComponent }
+      { path: 'pump-settings', component: DashboardPumpSettingsComponent },
+      { path: 'user', component: UserPageComponent }
     ] }
 ];
 

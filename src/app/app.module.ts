@@ -15,6 +15,7 @@ import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.co
 import { DashboardHomeComponent } from './pages/dashboard-page/dashboard-home/dashboard-home.component';
 import { DashboardHistoryComponent } from './pages/dashboard-page/dashboard-history/dashboard-history.component';
 import { DashboardPumpSettingsComponent } from './pages/dashboard-page/dashboard-pump-settings/dashboard-pump-settings.component';
+import { UserPageComponent } from './pages/dashboard-page/user-page/user-page.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { DashboardPumpSettingsComponent } from './pages/dashboard-page/dashboard
     DashboardPageComponent,
     DashboardHomeComponent,
     DashboardHistoryComponent,
-    DashboardPumpSettingsComponent
+    DashboardPumpSettingsComponent,
+    UserPageComponent
   ],
   imports: [
     BrowserModule,
