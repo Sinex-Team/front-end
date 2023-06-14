@@ -1,7 +1,7 @@
 <section class="statistics">
   <div class="stat-blocks-group">
     <div class="stat-block">
-      <p class="stat-number">12</p>
+      <p class="stat-number">{{countOfHygrometers}}</p>
       <p class="stat-title">Number of hygrometers</p>
     </div>
     <div class="stat-block">
@@ -9,20 +9,20 @@
       <p class="stat-title">Average temperature</p>
     </div>
     <div class="stat-block">
-      <p class="stat-number">65%</p>
-      <p class="stat-title">Average air humidity</p>
+      <p class="stat-number">{{averageSoilHumidity}}%</p>
+      <p class="stat-title">Average soil humidity</p>
     </div>
   </div>
   <table class="stat-table">
     <tr>
-      <th>Device activity</th>
+      <th>Device ID</th>
       <th>Current humidity (%)</th>
       <th>Last watering</th>
     </tr>
-    <tr>
-      <td class="sensor-status">Jill</td>
-      <td class="cntr-col">Smith</td>
-      <td class="cntr-col">50</td>
+    <tr *ngFor="let hygrometer of hygrometers">
+      <td class="sensor-status">{{hygrometer.id}}</td>
+      <td class="cntr-col">{{hygrometer.humidity}}</td>
+      <td class="cntr-col">{{hygrometer.dateAndTime}}</td>
     </tr>
   </table>
 </section>

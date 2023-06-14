@@ -6,9 +6,9 @@
     </div>
     <h2>Navigation</h2>
     <nav>
-      <span class="nav-block"><img src="assets/icons/home.png" alt="home"><p>Home</p></span>
-      <span class="nav-block"><img src="assets/icons/history.png" alt="history"><p>History</p></span>
-      <span class="nav-block"><img src="assets/icons/pump.png" alt="pump"><p>Pump settings</p></span>
+      <span class="nav-block" [routerLink]="'home'"><img src="assets/icons/home.png" alt="home"><p>Home</p></span>
+      <span class="nav-block" [routerLink]="'history'"><img src="assets/icons/history.png" alt="history"><p>History</p></span>
+      <span class="nav-block" [routerLink]="'pump-settings'"><img src="assets/icons/pump.png" alt="pump"><p>Pump settings</p></span>
     </nav>
   </aside>
   <router-outlet></router-outlet>
