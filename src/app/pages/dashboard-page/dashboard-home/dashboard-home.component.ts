@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {HygrometerService} from "../../../shared/services/hygrometer.service";
 import {Hygrometer} from "../../../shared/interfaces/Hygrometer";
-import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-dashboard-home',
@@ -10,10 +9,24 @@ import {Observable} from "rxjs";
 })
 export class DashboardHomeComponent {
   hygrometers: Hygrometer[] = [];
+  countOfHygrometers = 0;
+  averageSoilHumidity = 0;
 
-  constructor(private hygrometerService: HygrometerService) {}
+  constructor(private hygrometerService: HygrometerService) {
+    this.getAllHygrometers();
+  }
 
   getAllHygrometers(): void {
-    // this.hygrometers = this.hygrometerService.getAllHygrometers();
+    this.hygrometerService.getAllHygrometers().subscribe(response => {
+      this.hygrometers = response;
+      this.countOfHygrometers = this.hygrometers.length;
+      let sumOfAllHumidities = 0;
+      for (let i = 0; i < this.hygrometers.length; i++) {
+        sumOfAllHumidities += this.hygrometers[i].humidity;
+      }
+      if (this.hygrometers.length !== 0) {
+        this.averageSoilHumidity = sumOfAllHumidities / this.hygrometers.length;
+      }
+    });
   }
 }

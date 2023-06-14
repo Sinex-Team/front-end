@@ -41,12 +41,4 @@ export class AuthService {
       this.authSubject.next(false);
     });
   }
-  //
-  // private isLoged() {
-  //   let isToken = false;
-  //   if (localStorage.getItem('access_token')) {
-  //     isToken = true;
-  //   }
-  //   return isToken;
-  // }
 }
