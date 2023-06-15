@@ -17,7 +17,7 @@ import {
 import { UserPageComponent } from './pages/dashboard-page/user-page/user-page.component';
 
 const routes: Routes = [
-  { path: '**', redirectTo: 'login'},
+  { path: '', pathMatch: 'full', redirectTo: 'login'},
   { path: 'reg', component: RegistrationPageComponent, canActivate: [IsLogoutGuard]},
   { path: 'login', component: LoginPageComponent,  canActivate: [IsLogoutGuard]},
   { path: 'dashboard', component: DashboardPageComponent, canActivate: [IsLoginGuard], canActivateChild: [IsLoginChildGuard],
